@@ -35,7 +35,11 @@ app.get("/signup",(req,res)=>{
     res.sendFile(__dirname + "/signup.html");
 })
 
+app.get("/signupsuccess",(req,res)=>{
+    res.sendFile(__dirname+"/signupsuccess.html");
+})
 //post requests------------------------
+
 app.post("/signup",(req,res)=>{
     res.sendFile(__dirname+"/signup.html")
 
@@ -45,12 +49,14 @@ app.post("/signup",(req,res)=>{
 
     //check if credentials are correct
     //we will have to use mongodb for this
-
+    
+    console.log("successfully signed up")
     //set the auth cookie if the login is successful
     res.cookie(`${email}`,`${password}`,{maxAge: 5000, httpOnly:true});
-
     //redirect the user to the dashboard page
-    res.redirect('/login');
+    // res.redirect('/signupsuccess');
+    res.redirect("/dashboard")
+    
 });
 
 app.post("/login",(req,res)=>{
