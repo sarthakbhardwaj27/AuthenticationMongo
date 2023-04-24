@@ -32,7 +32,8 @@ app.get("/login",(req,res)=>{
 });
 
 app.get("/signup",(req,res)=>{
-    res.sendFile(__dirname + "/signup.html");
+    res.sendFile(__dirname+"/signup.html");
+    console.log("**********app get signup");
 })
 
 app.get("/signupsuccess",(req,res)=>{
@@ -41,7 +42,7 @@ app.get("/signupsuccess",(req,res)=>{
 //post requests------------------------
 
 app.post("/signup",(req,res)=>{
-    res.sendFile(__dirname+"/signup.html")
+    // res.sendFile(__dirname+"/signup.html")
 
     const username = req.body.username;
     const email = req.body.email;
@@ -55,7 +56,7 @@ app.post("/signup",(req,res)=>{
     res.cookie(`${email}`,`${password}`,{maxAge: 5000, httpOnly:true});
     //redirect the user to the dashboard page
     // res.redirect('/signupsuccess');
-    res.redirect("/dashboard")
+    res.redirect("/login")
     
 });
 
@@ -72,13 +73,15 @@ app.post("/login",(req,res)=>{
     //we will have to use mongodb for this
 
     //set the auth cookie if the login is successful
-    res.cookie(`${email}`,`${password}`,{maxAge: 5000, httpOnly:true});
+    res.cookie(`${email}`,`${password}`,{maxAge: 50000, httpOnly:true});
 
     //redirect the user to the dashboard page
+    console.log("redirecting to dashboard");
     res.redirect('/dashboard');
 });
 
 app.get('/dashboard',(req,res)=>{
+    console.log("inside dashboard");
     const authCookie = req.cookies.auth;
 
     //if auth cookie is not present, then redirect to the login page
