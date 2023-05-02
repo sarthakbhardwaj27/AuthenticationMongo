@@ -24,6 +24,7 @@ app.get('/public/css/style.css', (req, res) => {
 
 app.get("/authenticate",(req,res)=>{
     res.sendFile(__dirname+"/authenticate.html");
+    console.log("app get authenticate")
 });
 
 app.get("/login",(req,res)=>{
