@@ -14,14 +14,13 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static('public'));
 app.use(cookieParser());
 
-
-//get requests------------------------
-
 //this was to remove that MIME warning while fetching css file
 app.get('/public/css/style.css', (req, res) => {
     res.setHeader('Content-Type', mime.getType('public/css/style.css'));
     res.sendFile(__dirname + '/public/css/style.css');
   });
+
+//get requests------------------------
 
 app.get("/authenticate",(req,res)=>{
     res.sendFile(__dirname+"/authenticate.html");
