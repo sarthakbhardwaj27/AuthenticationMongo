@@ -1,0 +1,32 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <h1>Welcome <%= username %></h1>
+    <p>You have successfully logged in!</p>
+    <form action="/" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Logout">
+    </form>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <h1>Welcome <%= username %></h1>
+    <p>You have successfully logged in!</p>
+    <form id="logout-form" action="/" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <button type="submit">Logout</button>
+    </form>
+  </body>
+</html>
